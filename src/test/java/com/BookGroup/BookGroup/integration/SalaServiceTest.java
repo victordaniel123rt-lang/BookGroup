@@ -71,6 +71,31 @@ public class SalaServiceTest {
         assertEquals(2,salas.size());
     }
 
+    @Test
+    @Transactional
+    void testActualizar_Founded(){
+        Sala salaParaGuardar = new Sala(null, "AQUA", 1500, "Santa Ursula", true, new ArrayList<>());
+        SalaDTO salaParaModificar = new SalaDTO(null, "AQUA 2", 2000, "Santa Ursula", true, new ArrayList<>());
+        Sala salaGuardada = salaRepository.save(salaParaGuardar);
+        Long idExistente = salaGuardada.getId();
+        SalaDTO actualizado = this.service.actualizar(idExistente,salaParaModificar);
+        assertNotNull(actualizado);
+        assertEquals("AQUA 2", actualizado.getNombre());
+        assertEquals(2000, actualizado.getCapacidad());
+    }
+
+    @Test
+    @Transactional
+    void testActualizar_NotFounded(){
+        SalaDTO salaParaModificar = new SalaDTO(null, "AQUA 2", 2000, "Santa Ursula", true, new ArrayList<>());
+        RuntimeException exception = assertThrows(RuntimeException.class, ()-> this.service.actualizar(1L, salaParaModificar));
+        assertEquals("No se encontro la sala con el id : " + 1L, exception.getMessage());
+    }
+
+
+
+
+
 
 
 
