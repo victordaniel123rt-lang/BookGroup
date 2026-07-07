@@ -64,7 +64,8 @@ public class ReservaServiceImpl implements ReservaSevice {
                 ()-> new IllegalArgumentException("No se encontro la reservación con el id : " + id)
         );
         reserva.setEstado(dto.getEstado());
-        return Mapper.toReservaDTO(reserva);
+        Reserva actualizado = repository.save(reserva);
+        return Mapper.toReservaDTO(actualizado);
     }
 
     @Override

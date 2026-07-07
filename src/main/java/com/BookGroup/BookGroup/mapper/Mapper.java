@@ -33,6 +33,7 @@ public class Mapper {
                 .fecha(entity.getFecha())
                 .empleado(entity.getEmpleado().getId())
                 .sala(entity.getSala().getId())
+                .estado(entity.getEstado())
                 .build();
     }
 
