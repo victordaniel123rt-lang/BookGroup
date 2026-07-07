@@ -51,5 +51,27 @@ public class SalaServiceTest {
         assertEquals("AQUA", sala.getNombre());
     }
 
+    @Test
+    void testFindById_NotFound(){
+        Long id = 5L;
+        RuntimeException exception = assertThrows(RuntimeException.class, ()-> this.service.buscarPorId(id));
+        assertEquals("No se encontro la sala con el id : " + id, exception.getMessage());
+    }
+
+
+    @Test
+    @Transactional
+    void testFindAll(){
+        Sala salaParaGuardar = new Sala(null, "AQUA", 1500, "Santa Ursula", true, new ArrayList<>());
+        Sala salaParaGuardar2 = new Sala(null, "AQUA 2", 2000, "Santa Monica", true, new ArrayList<>());
+        Sala guardado1 = salaRepository.save(salaParaGuardar);
+        Sala guardado2 = salaRepository.save(salaParaGuardar2);
+        List<SalaDTO> salas = this.service.buscarTodos();
+        assertNotNull(salas);
+        assertEquals(2,salas.size());
+    }
+
+
+
 
 }
