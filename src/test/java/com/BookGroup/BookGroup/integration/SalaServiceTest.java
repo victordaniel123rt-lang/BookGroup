@@ -92,6 +92,22 @@ public class SalaServiceTest {
         assertEquals("No se encontro la sala con el id : " + 1L, exception.getMessage());
     }
 
+    @Test
+    @Transactional
+    void testEliminar_Founded(){
+        Sala salaParaGuardar = new Sala(null, "AQUA", 1500, "Santa Ursula", true, new ArrayList<>());
+        Sala salaGuardada = salaRepository.save(salaParaGuardar);
+        Long idExistente = salaGuardada.getId();
+        SalaDTO eliminar = this.service.eliminar(idExistente);
+        assertNotNull(eliminar);
+    }
+
+    @Test
+    void testEliminar_NotFounded(){
+        RuntimeException exception = assertThrows(RuntimeException.class, ()-> this.service.eliminar(5L));
+        assertEquals("No se encontro la sala con el id : " + 5L, exception.getMessage());
+    }
+
 
 
 

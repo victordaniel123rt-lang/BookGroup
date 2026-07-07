@@ -23,10 +23,10 @@ public class Reserva {
     private LocalDateTime horaFin;
     @Enumerated(EnumType.STRING)
     private Estado estado;
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sala_id")
     private Sala sala;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "empleado_id")
     private Empleado empleado;
 }
