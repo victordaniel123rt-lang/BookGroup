@@ -40,6 +40,7 @@ public class Mapper {
         if(entity==null) return null;
         List<ReservaDTO> reservas = entity.getReservas().stream().map(Mapper::toReservaDTO).toList();
        return EmpleadoDTO.builder()
+               .id(entity.getId())
                 .nombre(entity.getNombre())
                 .correo(entity.getCorreo())
                 .departamento(entity.getDepartamento())

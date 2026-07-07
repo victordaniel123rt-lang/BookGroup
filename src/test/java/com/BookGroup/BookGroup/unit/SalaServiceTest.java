@@ -9,7 +9,7 @@ import com.BookGroup.BookGroup.entity.Sala;
 import com.BookGroup.BookGroup.mapper.Mapper;
 import com.BookGroup.BookGroup.repository.SalaRepository;
 import com.BookGroup.BookGroup.service.impl.SalaServiceImpl;
-import com.BookGroup.BookGroup.service.interfaces.SalaService;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
-public class SalServiceTest {
+public class SalaServiceTest {
 
     @Mock
     private SalaRepository repository;
