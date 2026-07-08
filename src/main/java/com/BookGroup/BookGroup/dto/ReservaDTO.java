@@ -15,7 +15,7 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @Schema(description = "Modelo que representa una Reservacion validada por la empresa")
 public class ReservaDTO {
-    @Schema(description = "ID con el que se identifica la reservación y es autogenerado", example = "3", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(description = "ID con el que se identifica la reservación y es autogenerado", example = "3", accessMode =Schema.AccessMode.READ_ONLY)
     private Long id;
     @Schema(description = "Fecha en la cual quedo registrada la reservacion", example = "15-07-26", requiredMode = Schema.RequiredMode.REQUIRED)
     private LocalDate fecha;
