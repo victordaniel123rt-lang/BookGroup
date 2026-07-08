@@ -1,0 +1,26 @@
+services:
+  app-web:
+    build: .
+    container_name: bookgroup
+    ports:
+      - "8080:8080"
+    environment:
+      # Configuración para que H2 guarde los datos en un archivo dentro del contenedor
+      SPRING_DATASOURCE_URL: jdbc:h2:file:/data/hoteldb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+      SPRING_DATASOURCE_USERNAME: sa
+      SPRING_DATASOURCE_PASSWORD: ""
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.h2.Driver
+
+      # Dialecto correcto para Hibernate con H2
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.H2Dialect
+
+      # Habilitar la consola web de H2 por si quieres revisar tus tablas desde el navegador
+      SPRING_H2_CONSOLE_ENABLED: "true"
+      SPRING_H2_CONSOLE_PATH: /h2-console
+
+    # Este volumen opcional evita que tus reservaciones se borren cada vez que apagues el contenedor
+    volumes:
+      - h2_data:/data
+
+volumes:
+  h2_data:
