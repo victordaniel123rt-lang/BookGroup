@@ -1,4 +1,6 @@
 # BookGroup
+![servicios](./docs/hotel.png)
+
 
 Sistema de reservas desarrollado con Java y Spring Boot para practicar el manejo de LocalDateTime y la incorporación de un centralizador global de excepciones. La aplicación ofrece una API REST sencilla para gestionar empleados, salas y reservas usando H2 como base de datos embebida.
 
